@@ -6,5 +6,5 @@ Vagrant.configure(2) do |config|
       ansible.playbook="ansible/playbook.yml"
       ansible.sudo = true
   end
-  config.vm.post_up_message = "Use http://127.0.0.1:8585 to run war from /home/vagrant/sync"
+  config.vm.post_up_message = "Use http://127.0.0.1:5858 to run war from /home/vagrant/sync"
 end
