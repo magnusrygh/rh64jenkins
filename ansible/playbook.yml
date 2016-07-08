@@ -2,9 +2,9 @@
 - hosts: all
   remote_user: vagrant
   tasks:
-  - name: Installing java
-    yum: name=java state=present
-  - name: Installing git
-    yum: name=git-core state=present
-  - name: Installing Jenkins
-    yum: name=jenkins state=present
+  - yum: name={{ item }} update_cache=yes state=present
+    with_items:
+      - java
+      - git
+      - maven
+      - jenkins
