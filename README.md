@@ -1,5 +1,3 @@
-Provisioning jenkins on RH linux. Some bad stuff in provision.sh
-On the good side, this sets up latst Jenkins
-Run: java -jar /usr/lib/jenkins/jenkins.war &
-copy the generated admin password
+Provisioning jenkins on RH linux. 
+copy the generated admin password from jenkins.log on remote
 Open localhost:5858
