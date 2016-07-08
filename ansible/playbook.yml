@@ -2,9 +2,20 @@
 - hosts: all
   remote_user: vagrant
   tasks:
-  - yum: name={{ item }} update_cache=yes state=present
+  - name: Get java, git, maven
+    yum: name={{ item }} update_cache=yes state=present
     with_items:
       - java
       - git
       - maven
-      - jenkins
+  - name: get jenkins.repo
+    get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo
+  - name: add key to rpm db
+    rpm_key: state=present key=http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+  - name: get jenkins
+    yum: name=jenkins update_cache=yes state=present
+
+  - name: Copy file with command
+    copy: src=files/runjenkins dest={{ ansible_env.HOME  }} mode="a+x"
+  - name: start jenkins
+    command: ~/runjenkins

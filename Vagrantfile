@@ -1,7 +1,6 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "centos/7"
   config.vm.network "forwarded_port", guest: 8080, host: 5858
-  config.vm.provision "shell", path: "provision.sh"
   config.vm.provision "ansible" do |ansible|
       ansible.playbook="ansible/playbook.yml"
       ansible.sudo = true
